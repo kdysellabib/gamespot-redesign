@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gaming News Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">Gaming News Hub</div>
+
+    <nav>
+  <a href="#home">Home</a>
+  <a href="#articles">Articles</a>
+  <a href="#add">Add Article</a>
+  <a href="#newsletter">Newsletter</a>
+</nav>
+
+    <button id="themeBtn">Dark Mode</button>
+  </header>
+
+  <section id="home" class="hero">
+    <div>
+      <h1>Level Up Your Gaming News</h1>
+      <p>A simple redesigned gaming website inspired by GameSpot.</p>
+    </div>
+  </section>
+
+  <section id="articles" class="controls">
+    <h2>Browse Articles</h2>
+
+    <div class="control-box">
+      <input type="text" id="searchInput" placeholder="Search article...">
+
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="news">News</option>
+        <option value="review">Review</option>
+        <option value="guide">Guide</option>
+      </select>
+    </div>
+  </section>
+
+  <section id="add" class="add-section">
+    <h2>Add New Article</h2>
+
+    <div class="form-box">
+      <input type="text" id="titleInput" placeholder="Article title">
+      <input type="text" id="platformInput" placeholder="Platform e.g. PC, PS5">
+
+      <select id="typeInput">
+        <option value="news">News</option>
+        <option value="review">Review</option>
+        <option value="guide">Guide</option>
+      </select>
+
+      <button id="addBtn">Add Article</button>
+    </div>
+  </section>
+
+  <main id="articlesContainer" class="articles"></main>
+
+  <section id="newsletter" class="newsletter">
+    <h2>Subscribe to Newsletter</h2>
+    <p>Get the latest gaming updates directly to your email.</p>
+
+    <div class="newsletter-box">
+      <input type="email" placeholder="Enter your email">
+      <button>Subscribe</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>Gaming News Hub - Web Design Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
