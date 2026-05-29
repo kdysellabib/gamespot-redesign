@@ -51,7 +51,7 @@ function displayArticles(list) {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="${article.image}" class="card-img">
+      <img src="${article.image}" class="card-img" alt="Game image">
 
       <div class="card-content">
         <h3>${article.title}</h3>

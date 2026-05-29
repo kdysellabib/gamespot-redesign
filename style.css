@@ -14,7 +14,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Header */
 header {
   background-color: #111827;
   color: white;
@@ -22,22 +21,23 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s;
-  
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
+  color: #ffcc00;
   font-size: 24px;
   font-weight: bold;
-  color: #ffcc00;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  margin: 0 12px;
+  margin: 0 10px;
   padding-bottom: 5px;
-  transition: color 0.3s, border-bottom 0.3s;
+  transition: 0.3s;
 }
 
 nav a:hover {
@@ -45,68 +45,143 @@ nav a:hover {
   border-bottom: 2px solid #ffcc00;
 }
 
-/* Buttons */
-button {
+button,
+.hero-btn {
+  background-color: #ffcc00;
+  color: #111;
   padding: 11px 18px;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
-  background-color: #ffcc00;
-  color: #111;
   font-weight: bold;
-  transition: transform 0.2s, background-color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
 }
 
-button:hover {
+button:hover,
+.hero-btn:hover {
   transform: scale(1.05);
   background-color: #e6b800;
 }
 
-/* Hero */
 .hero {
-  min-height: 330px;
-  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+  min-height: 520px;
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.70)),
               url("images/banner.jpg");
   background-size: cover;
   background-position: center;
   color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 40px;
+  padding: 60px 8%;
   animation: fadeDown 1s ease;
-  transition: background 0.3s;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.tag {
+  color: #ffcc00;
+  font-weight: bold;
 }
 
 .hero h1 {
-  font-size: 44px;
-  margin-bottom: 10px;
+  font-size: 56px;
+  margin: 15px 0;
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: 19px;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
 
-/* Sections */
+.stats {
+  width: 88%;
+  margin: -55px auto 30px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.stats div {
+  padding: 25px;
+  border-right: 1px solid #eee;
+}
+
+.stats h2 {
+  color: #111827;
+  font-size: 34px;
+  margin: 0;
+}
+
+.stats p {
+  margin-bottom: 0;
+  color: #555;
+}
+
+.features,
 .controls,
 .add-section,
+.how,
+.reviews,
+.faq,
 .newsletter {
   width: 90%;
-  margin: 25px auto;
-  padding: 25px;
+  margin: 30px auto;
+  padding: 30px;
   background-color: white;
-  border-radius: 14px;
+  border-radius: 16px;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: background-color 0.3s, color 0.3s;
+  transition: 0.3s;
 }
 
+.features h2,
 .controls h2,
 .add-section h2,
+.how h2,
+.reviews h2,
+.faq h2,
 .newsletter h2 {
-  margin-top: 0;
   color: #111827;
+  margin-top: 0;
+}
+
+.feature-box,
+.steps,
+.review-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.feature-card,
+.step,
+.review-card,
+.faq-item {
+  background-color: #f9fafb;
+  padding: 24px;
+  border-radius: 14px;
+  border-top: 4px solid #ffcc00;
+  transition: 0.3s;
+}
+
+.feature-card:hover,
+.step:hover,
+.review-card:hover,
+.faq-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
 .control-box,
@@ -118,24 +193,22 @@ button:hover {
   flex-wrap: wrap;
 }
 
-/* Inputs */
 input,
 select {
   padding: 12px;
   width: 230px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  transition: box-shadow 0.3s, border 0.3s;
+  transition: 0.3s;
 }
 
 input:focus,
 select:focus {
   outline: none;
   border: 2px solid #ffcc00;
-  box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+  box-shadow: 0 0 8px rgba(255,204,0,0.5);
 }
 
-/* Article Cards */
 .articles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -145,7 +218,7 @@ select:focus {
 
 .card {
   background-color: white;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   border-left: 5px solid #ffcc00;
   box-shadow: 0 5px 18px rgba(0,0,0,0.1);
@@ -160,9 +233,9 @@ select:focus {
 
 .card-img {
   width: 100%;
-  height: 180px;
+  height: 190px;
   object-fit: cover;
-  transition: transform 0.3s, filter 0.3s;
+  transition: 0.3s;
 }
 
 .card:hover .card-img {
@@ -171,12 +244,12 @@ select:focus {
 }
 
 .card-content {
-  padding: 18px;
+  padding: 20px;
 }
 
 .card h3 {
-  margin-top: 0;
   color: #111827;
+  margin-top: 0;
 }
 
 .card span {
@@ -194,17 +267,52 @@ select:focus {
   background-color: #b00024;
 }
 
-/* Footer */
+.step span {
+  background-color: #ffcc00;
+  color: #111;
+  width: 45px;
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.review-card img {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffcc00;
+}
+
+.review-card p {
+  color: #ffcc00;
+  font-size: 18px;
+}
+
+.faq {
+  text-align: left;
+}
+
+.faq h2 {
+  text-align: center;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+}
+
 footer {
   background-color: #111827;
   color: white;
   text-align: center;
   padding: 18px;
   margin-top: 30px;
-  transition: background-color 0.3s;
 }
 
-/* Animations */
 @keyframes fadeDown {
   from {
     opacity: 0;
@@ -235,32 +343,47 @@ footer {
   color: white;
 }
 
-.dark header {
+.dark header,
+.dark footer {
   background-color: #020617;
 }
 
 .dark .hero {
-  background: linear-gradient(rgba(2,6,23,0.82), rgba(2,6,23,0.82)),
+  background: linear-gradient(rgba(2,6,23,0.82), rgba(2,6,23,0.85)),
               url("images/banner.jpg");
   background-size: cover;
   background-position: center;
 }
 
+.dark .stats,
+.dark .features,
 .dark .controls,
 .dark .add-section,
+.dark .how,
+.dark .reviews,
+.dark .faq,
 .dark .newsletter,
 .dark .card {
   background-color: #1e293b;
   color: white;
 }
 
-.dark .controls h2,
-.dark .add-section h2,
-.dark .newsletter h2,
-.dark .card h3 {
+.dark .feature-card,
+.dark .step,
+.dark .review-card,
+.dark .faq-item {
+  background-color: #0f172a;
   color: white;
 }
 
+.dark h2,
+.dark h3,
+.dark .card h3,
+.dark .stats h2 {
+  color: white;
+}
+
+.dark .stats p,
 .dark .card span {
   color: #ffcc00;
 }
@@ -272,37 +395,55 @@ footer {
   border: 1px solid #475569;
 }
 
-.dark footer {
-  background-color: #020617;
-}
-
-/* Responsive */
 @media (max-width: 900px) {
-  .articles {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   header {
     padding: 18px 25px;
-  }
-}
-
-@media (max-width: 600px) {
-  header {
     flex-direction: column;
     gap: 15px;
   }
 
+  .articles,
+  .feature-box,
+  .steps,
+  .review-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    margin-top: 25px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 600px) {
   nav {
     text-align: center;
   }
 
-  .hero h1 {
-    font-size: 32px;
+  nav a {
+    display: inline-block;
+    margin: 6px;
   }
 
-  .articles {
+  .articles,
+  .feature-box,
+  .steps,
+  .review-box {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 430px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 34px;
   }
 
   input,
