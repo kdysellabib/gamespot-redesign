@@ -8,8 +8,15 @@
 <body>
 
 <header>
-  <div class="logo">Gaming News Hub</div>
+  <div class="left-side">
 
+  <button id="menuBtn" class="menu-btn">☰</button>
+
+  <div class="logo">
+    Gaming News Hub
+  </div>
+
+</div>
   <nav>
     <a href="#home">Home</a>
     <a href="#articles">Articles</a>
@@ -21,11 +28,19 @@
   <button id="themeBtn">Dark Mode</button>
 </header>
 
+<div id="sidebar" class="sidebar">
+  <a href="#home">Home</a>
+  <a href="#articles">Articles</a>
+  <a href="#how">How It Works</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#faq">FAQ</a>
+</div>
+
 <section id="home" class="hero">
   <div class="hero-content">
     <span class="tag">Gaming News • Reviews • Guides</span>
     <h1>Level Up Your Gaming News</h1>
-    <p>A redesigned gaming website inspired by GameSpot with search, filtering, adding, removing, and dark mode.</p>
+    <p>A redesigned gaming website inspired by GameSpot to share the latest updates, reviews, and guides.</p>
     <a href="#articles" class="hero-btn">Explore Articles</a>
   </div>
 </section>
@@ -38,12 +53,12 @@
 
   <div>
     <h2>20+</h2>
-    <p>Game Reviews</p>
+    <p>Reviews</p>
   </div>
 
   <div>
     <h2>10+</h2>
-    <p>Helpful Guides</p>
+    <p>Guides</p>
   </div>
 </section>
 
@@ -68,38 +83,16 @@
   </div>
 </section>
 
-<section id="articles" class="controls">
-  <h2>Browse Articles</h2>
-  <p>Search by article title or filter by category.</p>
+<section id="articles" class="filter-section">
+  <h2>Featured Articles</h2>
+  <p>Use the filter to show News, Reviews, or Guides.</p>
 
-  <div class="control-box">
-    <input type="text" id="searchInput" placeholder="Search article...">
-
-    <select id="categoryFilter">
-      <option value="all">All Categories</option>
-      <option value="news">News</option>
-      <option value="review">Review</option>
-      <option value="guide">Guide</option>
-    </select>
-  </div>
-</section>
-
-<section class="add-section">
-  <h2>Add New Article</h2>
-  <p>Add a new article card to the website.</p>
-
-  <div class="form-box">
-    <input type="text" id="titleInput" placeholder="Article title">
-    <input type="text" id="platformInput" placeholder="Platform e.g. PC, PS5">
-
-    <select id="typeInput">
-      <option value="news">News</option>
-      <option value="review">Review</option>
-      <option value="guide">Guide</option>
-    </select>
-
-    <button id="addBtn">Add Article</button>
-  </div>
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+    <option value="news">News</option>
+    <option value="review">Review</option>
+    <option value="guide">Guide</option>
+  </select>
 </section>
 
 <main id="articlesContainer" class="articles"></main>
@@ -110,20 +103,20 @@
   <div class="steps">
     <div class="step">
       <span>1</span>
-      <h3>Search</h3>
-      <p>Type the game or article name in the search box.</p>
+      <h3>Choose Category</h3>
+      <p>Select News, Review, or Guide from the filter list.</p>
     </div>
 
     <div class="step">
       <span>2</span>
-      <h3>Filter</h3>
-      <p>Choose News, Review, or Guide from the category list.</p>
+      <h3>View Articles</h3>
+      <p>The website shows only articles that match the selected category.</p>
     </div>
 
     <div class="step">
       <span>3</span>
-      <h3>Add or Remove</h3>
-      <p>Add a new article or remove an existing one from the page.</p>
+      <h3>Switch Theme</h3>
+      <p>Use the Dark Mode button to change the website appearance.</p>
     </div>
   </div>
 </section>
@@ -143,14 +136,14 @@
       <img src="images/review2.jpg" alt="Gamer avatar">
       <h3>Mohammed</h3>
       <p>★★★★★</p>
-      <q>The search and filter features are very useful.</q>
+      <q>The filter feature makes browsing articles simple.</q>
     </div>
 
     <div class="review-card">
       <img src="images/review3.jpg" alt="Gamer avatar">
       <h3>Ali</h3>
       <p>★★★★★</p>
-      <q>The dark mode makes the design look professional.</q>
+      <q>The dark mode gives the website a professional look.</q>
     </div>
   </div>
 </section>
@@ -165,12 +158,12 @@
 
   <div class="faq-item">
     <h3>What JavaScript features are used?</h3>
-    <p>Search, filtering, adding articles, removing articles, and dark mode.</p>
+    <p>We used category filtering, dark mode, and a sidebar menu.</p>
   </div>
 
   <div class="faq-item">
-    <h3>Is this website built from scratch?</h3>
-    <p>No, it is a redesigned and improved version inspired by an existing gaming website.</p>
+    <h3>Why did we use filtering?</h3>
+    <p>Filtering helps users view only the type of articles they want.</p>
   </div>
 </section>
 

@@ -37,17 +37,22 @@ let articles = [
   }
 ];
 
+// عناصر الصفحة
 const container = document.getElementById("articlesContainer");
-const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
-const addBtn = document.getElementById("addBtn");
 const themeBtn = document.getElementById("themeBtn");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
 
+// عرض المقالات
 function displayArticles(list) {
+
   container.innerHTML = "";
 
-  list.forEach(function(article, index) {
+  list.forEach(function(article) {
+
     const card = document.createElement("div");
+
     card.className = "card";
 
     card.innerHTML = `
@@ -55,78 +60,118 @@ function displayArticles(list) {
 
       <div class="card-content">
         <h3>${article.title}</h3>
-        <p><span>Platform:</span> ${article.platform}</p>
-        <p><span>Type:</span> ${article.type}</p>
-        <button class="remove-btn" onclick="removeArticle(${index})">Remove</button>
+
+        <p>
+          <span>Platform:</span>
+          ${article.platform}
+        </p>
+
+        <p>
+          <span>Type:</span>
+          ${article.type}
+        </p>
+
       </div>
     `;
 
     container.appendChild(card);
+
   });
+
 }
 
+// فلترة المقالات
 function filterArticles() {
-  const searchText = searchInput.value.toLowerCase();
+
   const selectedType = categoryFilter.value;
 
   const filtered = articles.filter(function(article) {
-    const matchesSearch = article.title.toLowerCase().includes(searchText);
-    const matchesType = selectedType === "all" || article.type === selectedType;
 
-    return matchesSearch && matchesType;
+    return (
+      selectedType === "all" ||
+      article.type === selectedType
+    );
+
   });
 
   displayArticles(filtered);
+
 }
 
-function removeArticle(index) {
-  const cards = document.querySelectorAll(".card");
+// تشغيل الفلتر
+categoryFilter.addEventListener(
+  "change",
+  filterArticles
+);
 
-  cards[index].style.opacity = "0";
-  cards[index].style.transform = "scale(0.8)";
+// Dark Mode
+themeBtn.addEventListener(
+  "click",
+  function() {
 
-  setTimeout(function() {
-    articles.splice(index, 1);
-    filterArticles();
-  }, 300);
-}
+    document.body.classList.toggle("dark");
 
-addBtn.addEventListener("click", function() {
-  const title = document.getElementById("titleInput").value;
-  const platform = document.getElementById("platformInput").value;
-  const type = document.getElementById("typeInput").value;
+    if (
+      document.body.classList.contains("dark")
+    ) {
 
-  if (title === "" || platform === "") {
-    alert("Please fill all fields");
-    return;
+      themeBtn.textContent =
+      "Light Mode";
+
+    }
+    else {
+
+      themeBtn.textContent =
+      "Dark Mode";
+
+    }
+
   }
+);
 
-  const newArticle = {
-    title: title,
-    platform: platform,
-    type: type,
-    image: "images/default.jpg"
-  };
+// Sidebar Menu
+menuBtn.addEventListener(
+  "click",
+  function() {
 
-  articles.push(newArticle);
+    sidebar.classList.toggle("active");
 
-  document.getElementById("titleInput").value = "";
-  document.getElementById("platformInput").value = "";
+  }
+);
 
-  filterArticles();
+// إغلاق القائمة عند الضغط على أي رابط
+const sidebarLinks =
+document.querySelectorAll(".sidebar a");
+
+sidebarLinks.forEach(function(link) {
+
+  link.addEventListener(
+    "click",
+    function() {
+
+      sidebar.classList.remove("active");
+
+    }
+  );
+
 });
 
-searchInput.addEventListener("keyup", filterArticles);
-categoryFilter.addEventListener("change", filterArticles);
+// إغلاق القائمة عند الضغط خارجها
+document.addEventListener(
+  "click",
+  function(event) {
 
-themeBtn.addEventListener("click", function() {
-  document.body.classList.toggle("dark");
+    if (
+      !sidebar.contains(event.target) &&
+      !menuBtn.contains(event.target)
+    ) {
 
-  if (document.body.classList.contains("dark")) {
-    themeBtn.textContent = "Light Mode";
-  } else {
-    themeBtn.textContent = "Dark Mode";
+      sidebar.classList.remove("active");
+
+    }
+
   }
-});
+);
 
+// تشغيل الموقع أول مرة
 displayArticles(articles);

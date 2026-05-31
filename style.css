@@ -65,9 +65,59 @@ button:hover,
   background-color: #e6b800;
 }
 
+/* زر القائمة الجانبية */
+.menu-btn {
+  font-size: 25px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid #ffcc00;
+  padding: 7px 12px;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background-color: #111827;
+  padding-top: 90px;
+  transition: 0.3s;
+  z-index: 2000;
+  box-shadow: 5px 0 20px rgba(0,0,0,0.3);
+}
+
+/* روابط القائمة الجانبية */
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 16px 28px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.left-side{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+/* تأثير الهوفر داخل القائمة */
+.sidebar a:hover {
+  background-color: #ffcc00;
+  color: #111;
+  padding-left: 38px;
+}
+
+/* عند إضافة active تتحرك القائمة وتظهر */
+.sidebar.active {
+  left: 0;
+}
+
 .hero {
   min-height: 520px;
-  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.70)),
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
               url("images/banner.jpg");
   background-size: cover;
   background-position: center;
@@ -129,8 +179,7 @@ button:hover,
 }
 
 .features,
-.controls,
-.add-section,
+.filter-section,
 .how,
 .reviews,
 .faq,
@@ -146,8 +195,7 @@ button:hover,
 }
 
 .features h2,
-.controls h2,
-.add-section h2,
+.filter-section h2,
 .how h2,
 .reviews h2,
 .faq h2,
@@ -184,26 +232,17 @@ button:hover,
   box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
-.control-box,
-.form-box,
-.newsletter-box {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-input,
-select {
+select,
+input {
   padding: 12px;
-  width: 230px;
+  width: 240px;
   border: 1px solid #ccc;
   border-radius: 6px;
   transition: 0.3s;
 }
 
-input:focus,
-select:focus {
+select:focus,
+input:focus {
   outline: none;
   border: 2px solid #ffcc00;
   box-shadow: 0 0 8px rgba(255,204,0,0.5);
@@ -223,7 +262,7 @@ select:focus {
   border-left: 5px solid #ffcc00;
   box-shadow: 0 5px 18px rgba(0,0,0,0.1);
   animation: fadeUp 0.8s ease;
-  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s, background-color 0.3s;
+  transition: 0.3s;
 }
 
 .card:hover {
@@ -255,16 +294,6 @@ select:focus {
 .card span {
   font-weight: bold;
   color: #444;
-}
-
-.remove-btn {
-  background-color: crimson;
-  color: white;
-  margin-top: 10px;
-}
-
-.remove-btn:hover {
-  background-color: #b00024;
 }
 
 .step span {
@@ -305,36 +334,19 @@ select:focus {
   margin-bottom: 15px;
 }
 
+.newsletter-box {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 footer {
   background-color: #111827;
   color: white;
   text-align: center;
   padding: 18px;
   margin-top: 30px;
-}
-
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Dark Mode */
@@ -344,12 +356,13 @@ footer {
 }
 
 .dark header,
-.dark footer {
+.dark footer,
+.dark .sidebar {
   background-color: #020617;
 }
 
 .dark .hero {
-  background: linear-gradient(rgba(2,6,23,0.82), rgba(2,6,23,0.85)),
+  background: linear-gradient(rgba(2,6,23,0.82), rgba(2,6,23,0.88)),
               url("images/banner.jpg");
   background-size: cover;
   background-position: center;
@@ -357,8 +370,7 @@ footer {
 
 .dark .stats,
 .dark .features,
-.dark .controls,
-.dark .add-section,
+.dark .filter-section,
 .dark .how,
 .dark .reviews,
 .dark .faq,
@@ -393,6 +405,30 @@ footer {
   background-color: #0f172a;
   color: white;
   border: 1px solid #475569;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 900px) {
